@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sneha!</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, Sneha! 🎉</h1>
+        <div id="countdown">
+            <h2>Countdown to the Big Day:</h2>
+            <div id="timer"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="memory-lane.html">Memory Lane</a></li>
+                <li><a href="treasure-hunt.html">Treasure Hunt</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="final-surprise.html">Final Surprise</a></li>
+            </ul>
+        </nav>
+    </div>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        #timer {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 10px;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+    <script>
+        function startCountdown() {
+            const eventDate = new Date('March 17, 2025 00:00:00').getTime();
+            const timerElement = document.getElementById('timer');
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const difference = eventDate - now;
+                if (difference <= 0) {
+                    timerElement.innerHTML = "🎉 It's your special day, Sneha! 🎂";
+                    clearInterval(interval);
+                    return;
+                }
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+            updateTimer();
+            const interval = setInterval(updateTimer, 1000);
+        }
+        window.onload = startCountdown;
+    </script>
+</body>
+</html>

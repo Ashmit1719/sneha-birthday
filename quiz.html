@@ -1,0 +1,39 @@
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>How Well Do You Know Me?</h1>
+    <form id="quizForm">
+        <p>1. If I could take you on a dream vacation, where would we go?</p>
+        <input type="radio" name="q1" value="wrong"> Maldives<br>
+        <input type="radio" name="q1" value="wrong"> Santorini<br>
+        <input type="radio" name="q1" value="correct"> Bora Bora 🌴✅<br>
+        
+        <p>2. What thing about you do I love the most?</p>
+        <input type="radio" name="q2" value="wrong"> Your eyes<br>
+        <input type="radio" name="q2" value="wrong"> Your hair<br>
+        <input type="radio" name="q2" value="correct"> Your laugh ✅<br>
+
+        <button type="button" onclick="checkQuiz()">Submit</button>
+    </form>
+    
+    <script>
+        function checkQuiz() {
+            let correct = 0;
+            let answers = document.querySelectorAll("input[type='radio']:checked");
+            answers.forEach(ans => { if(ans.value === "correct") correct++; });
+            alert(`You got ${correct} out of 2 correct!`);
+            if (correct === 2) {
+                window.location.href = "final-surprise.html";
+            }
+        }
+    </script>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>
